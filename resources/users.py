@@ -215,6 +215,7 @@ class UserList(Resource):
             location=['form', 'json'])
         super().__init__()
 
+    @admin_required
     def post(self):
         """Register a new user or driver or admin"""
         kwargs = self.reqparse.parse_args()
@@ -293,7 +294,8 @@ class User(Resource):
     @admin_required
     def get(self, user_id):
         """Get a particular user"""
-        return models.User.get_user(user_id)
+        result = models.User.get_user(user_id)
+        return result
 
     @admin_required
     def put(self, user_id):

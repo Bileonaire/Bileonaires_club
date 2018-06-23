@@ -123,7 +123,8 @@ class User(db.Model):
                                     'Rides pending' : [], 'Rides rejected' : []}}
             for request in all_requests:
                 if request.user_id == user.id:
-                    ride = Ride.query.filter_by(id=request.ride_id).first()
+                    riderequest = Ride.query.filter_by(id=request.ride_id).first()
+                    ride = riderequest.departurepoint + " to " + riderequest.destination
                     if request.status == "taken":
                         profile[user.id]["Rides already taken"].append(ride)
                     if request.status == "pending":
@@ -185,11 +186,10 @@ class Ride(db.Model):
     departurepoint = db.Column(db.String(250), nullable=False)
     destination = db.Column(db.String(250), nullable=False)
     departuretime = db.Column(db.String(250), nullable=False)
-    cost = db.Column(db.Integer, nullable=False)
+    cost = db.Column(db.String, nullable=False)
     maximum = db.Column(db.Integer, nullable=False)
     driver_id = db.Column(db.Integer, nullable=False)
     status = db.Column(db.String(250), nullable=False)
-
 
 
     def __repr__(self):

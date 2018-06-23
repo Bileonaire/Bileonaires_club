@@ -24,6 +24,10 @@ class BaseTests(unittest.TestCase):
         self.application = app.create_app('config.TestingConfig')
         with self.application.app_context():
             db.create_all()
+            admin_reg = models.User.create_user(username="admin",
+                                                email="admin@gmail.com",
+                                                password="admin1234",
+                                                usertype="admin")
 
         user_reg = json.dumps({
             "username" : "user",
@@ -47,14 +51,6 @@ class BaseTests(unittest.TestCase):
             "numberplate" : "KBX 375X",
             "carmodel" : "Subaru"})
 
-        admin_reg = json.dumps({
-            "username" : "admin",
-            "email" : "admin@gmail.com",
-            "password" : "admin1234",
-            "confirm_password" : "admin1234",
-            "usertype" : "admin",
-            "numberplate" : None,
-            "carmodel" : None})
         self.user_log = json.dumps({
             "email" : "user@gmail.com",
             "password" : "12345678"})
@@ -83,10 +79,6 @@ class BaseTests(unittest.TestCase):
         
         register_driver = self.app.post(
             '/api/v2/auth/driverregister', data=driver_reg2,
-            content_type='application/json')
-
-        register_admin = self.app.post(
-            '/api/v2/users', data=admin_reg,
             content_type='application/json')
 
         admin_result = self.app.post(
