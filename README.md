@@ -116,7 +116,7 @@ https://Bileonaire.github.io/
 
 ## Heroku
 
-https://bileonaireridesv2.herokuapp.com/apidocs
+https://bileonaireclub.herokuapp.com/apidocs
 
 ## Versioning
 
