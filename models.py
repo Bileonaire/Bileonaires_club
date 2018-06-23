@@ -351,19 +351,22 @@ class Request(db.Model):
     def request_ride(cls, ride_id, user_id, accepted=False, status="pending"):
         """Creates a new request"""
         ride = Ride.query.filter_by(id=ride_id).first()
-        if ride != None:
-            new_request = cls(ride_id=ride_id, user_id=user_id,
-                                accepted=False, status="pending", driver_id=ride.driver_id)
-            db.session.add(new_request)
-            db.session.commit()
+        if ride == None or ride.status == "given":
+            return make_response(jsonify({"message" : "the ride does not exist"}), 404)
 
-        
-            return make_response(jsonify({"message" : "request has been successfully sent for approval",
-                                          str(new_request.id) : {"ride_id" : new_request.ride_id,
-                                                                 "user_id": new_request.user_id,
-                                                                 "accepted": new_request.accepted,
-                                                                 "status" : new_request.status}}), 201)
-        return make_response(jsonify({"message" : "the ride does not exist"}), 404)
+
+        new_request = cls(ride_id=ride_id, user_id=user_id,
+                            accepted=False, status="pending", driver_id=ride.driver_id)
+        db.session.add(new_request)
+        db.session.commit()
+
+    
+        return make_response(jsonify({"message" : "request has been successfully sent for approval",
+                                    str(new_request.id) : {"ride_id" : new_request.ride_id,
+                                                            "user_id": new_request.user_id,
+                                                            "accepted": new_request.accepted,
+                                                            "status" : new_request.status}}), 201)
+            
         
 
     @staticmethod
