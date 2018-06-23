@@ -62,25 +62,25 @@ Here is a list of all endpoints in the Bileonaire Rides API
 
 Endpoint | Functionality 
 ------------ | -------------
-POST   /api/v1/auth/userregister | Register a user
-POST   /api/v1/auth/driverregister | Register a driver
-POST   /api/v1/auth/login | Log in user
-POST   /api/v1/users | Create a user
-GET    /api/v1/users | Get all users
-GET   /api/v1/users/id | Get a single user
-PUT  /api/v1/users/id | Update a single user
-DELETE   /api/v1/users/id | Delete a single user
-POST   /api/v1/rides | Create new ride
-GET   /api/v1/rides | Get all rides
-GET   /api/v1/rides/id | Get a single ride
-PUT   /api/v1/rides/id | Update a single ride
-POST   /api/v1/rides/id/ | Start a ride
-DELETE   /api/v1/rides/id | Delete a single ride
-POST   /api/v1/rides/id/requests | Request a ride
-GET   /api/v1/requests | Get all requests
-DELETE   /api/v1/requests/id | Delete a single request
-GET   /api/v1/requests/id | Get a single request
-PUT  /api/v1/requests/id | Accept/Reject a request
+POST   /api/v2/auth/userregister | Register a user
+POST   /api/v2/auth/driverregister | Register a driver
+POST   /api/v2/auth/login | Log in user
+POST   /api/v2/users | Create a user
+GET    /api/v2/users | Get all users
+GET   /api/v2/users/id | Get a single user
+PUT  /api/v2/users/id | Update a single user
+DELETE   /api/v2/users/id | Delete a single user
+POST   /api/v2/rides | Create new ride
+GET   /api/v2/rides | Get all rides
+GET   /api/v2/rides/id | Get a single ride
+PUT   /api/v2/rides/id | Update a single ride
+POST   /api/v2/rides/id/ | Start a ride
+DELETE   /api/v2/rides/id | Delete a single ride
+POST   /api/v2/rides/id/requests | Request a ride
+GET   /api/v2/requests | Get all requests
+DELETE   /api/v2/requests/id | Delete a single request
+GET   /api/v2/requests/id | Get a single request
+PUT  /api/v2/requests/id | Accept/Reject a request
 
 ## Running the tests
 
