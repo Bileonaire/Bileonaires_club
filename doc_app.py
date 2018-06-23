@@ -404,7 +404,7 @@ def delete_borrowed():
 @app.route('/')
 def hello_world():
     "test that flask app is running"
-    return "To view the docs visit: https://bileonaireridesv2.herokuapp.com/apidocs"
+    return "To view the docs visit: https://bileonaireclub.herokuapp.com/apidocs"
 
 
 if __name__ == "__main__":
